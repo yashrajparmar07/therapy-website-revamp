@@ -1,24 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { ArrowRight, Leaf, Heart, ShieldCheck, Sprout, MapPin, Flower2 } from 'lucide-react';
+import { AppointmentButton, Botanical, SupportGrid, BookingBand, Location, doctorPortrait } from '@/components/therapy';
+import { pageHead } from '@/lib/clinic';
+export const Route = createFileRoute('/')({ head: () => pageHead('Clinical Hypnotherapy & Mental Well-being', 'Compassionate, individual-centred support with Dr Swaliha Khanam, Clinical Hypnotherapist and Mental Health Coach in Punjabi Bagh, New Delhi.'), component: Index });
+function Index() { return <><section className="home-hero"><div className="hero-copy"><span className="eyebrow"><span className="tiny-dot" />A SAFE SPACE TO HEAL & GROW</span><h1>Dr Swaliha<br />Khanam<span className="hero-subtitle"><br /><em>Here for your<br />individual journey.</em></span></h1><svg className="hero-squiggle" viewBox="0 0 115 12" fill="none" aria-hidden="true"><path d="M2 9C27 1 70 2 112 6M10 11C40 5 79 5 104 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg><div className="hero-role">Clinical Hypnotherapist & Mental Health Coach</div><p>A compassionate, non-judgmental space to feel heard, understand yourself, and move towards greater emotional well-being.</p><div className="hero-actions"><AppointmentButton /><AppointmentButton type="Video consultation" variant="quiet" /></div><div className="hero-fee">₹2,000 per consultation · In-clinic or online</div><div className="hero-location"><MapPin size={14} />Punjabi Bagh, New Delhi</div></div><div className="hero-portrait"><div className="portrait-frame"><img src={doctorPortrait} alt="Dr Swaliha Khanam, Clinical Hypnotherapist and Mental Health Coach" fetchPriority="high" /></div><div className="portrait-mark"><Flower2 strokeWidth={1} /></div><div className="portrait-caption"><div><strong>Dr Swaliha Khanam</strong><small>Clinical Hypnotherapist · Mental Health Coach</small></div><Leaf size={26} strokeWidth={1.1} /></div></div><Botanical className="hero-botanical" /></section><div className="values-strip"><span><ShieldCheck />A safe, non-judgmental space</span><span><Heart />Compassionate, individual-centred care</span><span><Sprout />Your pace. Your journey.</span><span><Leaf />Trauma-informed support</span></div><section className="support-section"><div className="section-inner"><div className="section-heading"><div><span className="eyebrow">AREAS OF SUPPORT</span><h2>Whatever you’re carrying,<br /><em>there is space for it here.</em></h2></div><p>Life can feel complex. Support can help you understand your experiences and find a way forward that feels right for you.</p></div><SupportGrid /><div className="support-more"><Link to="/support" className="text-link">Explore all areas of support <ArrowRight size={16} /></Link></div></div></section><section className="approach-section section-inner"><div className="approach-visual"><Botanical /><span>ROOTED IN COMPASSION</span></div><div className="approach-copy"><span className="eyebrow">MY APPROACH</span><h2>Not just your concerns.<br /><em>You, as a whole person.</em></h2><p>Every individual experiences life differently. My approach is individual-centred, compassionate, and goal-oriented — shaped around your experiences, needs, strengths, and circumstances.</p><p>I believe that meaningful change begins with feeling heard, understood, and respected.</p><Link to="/about" className="text-link">A little more about me <ArrowRight size={16} /></Link></div></section><BookingBand /><Location /></>; }
